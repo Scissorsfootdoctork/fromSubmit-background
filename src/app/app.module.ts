@@ -15,11 +15,13 @@ import { TypeOrmModule } from '@nestjs/typeorm'
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => ({
         type: 'mysql',
-        host: configService.get('DB_HOST'),
-        port: parseInt(configService.get('DB_PORT'), 10),
-        username: configService.get('DB_USERNAME'),
-        password: configService.get('DB_PASSWORD'),
-        database: configService.get('DB_DATABASE')
+        host: configService.get('db.host'),
+        port: configService.get('db.port'),
+        username: configService.get('db.username'),
+        password: configService.get('db.password'),
+        database: configService.get('db.database'),
+        synchronize: configService.get('typeOrm.Synchronize'),
+        autoLoadEntities: configService.get('typeOrm.AutoLoadEntities')
       })
     })
   ],

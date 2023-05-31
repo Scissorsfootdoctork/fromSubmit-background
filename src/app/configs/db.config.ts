@@ -8,6 +8,12 @@ export const dbConfig = () => {
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE
+    },
+    typeOrm: {
+      Synchronize: JSON.parse(
+          process.env.TYPEORM_SYNCHRONIZE.toLocaleLowerCase()) as boolean,
+      AutoLoadEntities: JSON.parse(
+          process.env.TYPEORM_AUTOLOADENTITIES.toLocaleLowerCase()) as boolean
     }
   }
 }
